@@ -7,6 +7,8 @@ interface Deltager {
   klub: string;
   gender: string;
   alder: number;
+  discipliner: string;
+  resultater: string;
 }
 
 const DeltagerListe = () => {
@@ -25,22 +27,23 @@ const DeltagerListe = () => {
     fetchDeltagere();
   }, []);
 
-return (
+  return (
     <div>
-        <h1 style={{ textAlign: "center" }}>Deltagerliste</h1>
-        <ul style={{ listStyleType: "none", padding: 0 }}>
-            {deltagere.map((deltager: Deltager) => (
-                <li key={deltager.id} style={{ marginBottom: "1rem" }}>
-                    <div style={{ fontWeight: "bold" }}>{deltager.navn}</div>
-                    <div>{deltager.klub}</div>
-                    <div>
-                        {deltager.gender} | {deltager.alder} years old
-                    </div>
-                </li>
-            ))}
-        </ul>
+      <h1 style={{ textAlign: "center" }}>Deltagerliste</h1>
+      <ul style={{ listStyleType: "none", padding: 0 }}>
+        {deltagere.map((deltager: Deltager) => (
+          <li key={deltager.id} style={{ marginBottom: "1rem" }}>
+            Navn:
+            <div style={{ fontWeight: "bold" }}>{deltager.navn}</div>
+            <div>Klub: {deltager.klub}</div>
+            <div>
+              Køn: {deltager.gender} | {deltager.alder} years old
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
-);
+  );
 };
 
 export default DeltagerListe;

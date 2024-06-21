@@ -1,5 +1,6 @@
 const API_URL = "http://localhost:8080";
 const DELTAGERE_URL = API_URL + "/api/deltagere";
+const RESULTATER_URL = API_URL + "/api/resultater";
 
 // Fetch deltagere
 async function getDeltagere() {
@@ -22,4 +23,15 @@ async function getDeltagereById(id: number) {
     }
 }
 
-export { getDeltagere, getDeltagereById};
+// Fetch resultater
+async function getResultater() {
+  const response = await fetch(RESULTATER_URL);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  } else {
+    return await response.json();
+  }
+}
+
+export { getDeltagere, getDeltagereById, getResultater};
