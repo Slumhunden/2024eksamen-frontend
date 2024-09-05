@@ -7,8 +7,22 @@ interface Deltager {
   klub: string;
   gender: string;
   alder: number;
-  discipliner: string;
-  resultater: string;
+  discipliner: Disciplin[];
+  resultater: Resultat[];
+}
+
+interface Disciplin {
+  id: number;
+  navn: string;
+  resultatType: string;
+}
+
+interface Resultat {
+  id: number;
+  resultat: string;
+  dato: string;
+  score: number;
+  disciplin: Disciplin;
 }
 
 const DeltagerListe = () => {
@@ -39,6 +53,12 @@ const DeltagerListe = () => {
             <div>
               Køn: {deltager.gender} | {deltager.alder} years old
             </div>
+            <div>
+              {deltager.discipliner.map((disciplin: Disciplin) => (
+                <span key={disciplin.id}> Disciplin: {disciplin.navn}</span>
+              ))}
+            </div>
+            <div></div>
           </li>
         ))}
       </ul>

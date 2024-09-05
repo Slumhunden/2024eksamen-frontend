@@ -14,13 +14,13 @@ async function getDeltagere() {
 }
 // Fetch deltagere by ID
 async function getDeltagereById(id: number) {
-    const url = `${DELTAGERE_URL}/${id}`;
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    } else {
-        return await response.json();
-    }
+  const url = `${DELTAGERE_URL}/${id}`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  } else {
+    return await response.json();
+  }
 }
 
 // Fetch resultater
@@ -34,4 +34,14 @@ async function getResultater() {
   }
 }
 
-export { getDeltagere, getDeltagereById, getResultater};
+async function getResultaterById(id: number) {
+  const url = `${RESULTATER_URL}/${id}`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  } else {
+    return await response.json();
+  }
+}
+
+export { getDeltagere, getDeltagereById, getResultater, getResultaterById };
